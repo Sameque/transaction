@@ -7,10 +7,9 @@ using Xunit;
 
 namespace Transactions.Teste
 {
-    public class BankTeste
+    public class BankTeste  
     {
         private IHttpClientFactory _httpClientFactory;
-
         public HttpClient Client { get; private set; }
         [Fact]
         public async Task List()
