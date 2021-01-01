@@ -9,6 +9,7 @@ namespace Transactions.Teste
 {
     public class BankTeste  
     {
+        
         private IHttpClientFactory _httpClientFactory;
         public HttpClient Client { get; private set; }
         [Fact]
