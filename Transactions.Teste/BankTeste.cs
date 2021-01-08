@@ -33,7 +33,7 @@ namespace Transactions.Teste
             var response = await Client.GetAsync("/bank/1");
             response.EnsureSuccessStatusCode();
 
-            Assert.Equal(HttpStatusCode.OK,response.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest,response.StatusCode);
         }
     }
 }
