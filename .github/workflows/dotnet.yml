@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 5.0.101
     - name: Restore dependencies
-      working-directory: Transactions
+      run: dotnet restore Transactions/Transactions.csproj
     - name: Build
       run: dotnet build --no-restore Transactions/Transactions.csproj
     - name: Test
