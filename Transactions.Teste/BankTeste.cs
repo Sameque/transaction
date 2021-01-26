@@ -12,6 +12,19 @@ namespace Transactions.Teste
         
         private IHttpClientFactory _httpClientFactory;
         public HttpClient Client { get; private set; }
+
+        [Fact]
+        public async Task Post()
+        {
+            var server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
+            Client = server.CreateClient();
+
+            var response = await Client.PostAsync("/bank", new { Name="Bradesco",Code=237});
+            response.EnsureSuccessStatusCode();
+
+            Assert.Equal(HttpStatusCode.BadRequest,response.StatusCode);
+        }
+
         [Fact]
         public async Task List()
         {

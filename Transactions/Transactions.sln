@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transactions", "Transactions.csproj", "{5C8106C8-5A33-45BC-B9E3-F4BD3C5ED547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.Teste", "..\Transactions.Teste\Transactions.Teste.csproj", "{D1E825CF-C510-4200-9E9C-1506F1F857AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.ClientFactory", "..\Transactions.ClientFactory\Transactions.ClientFactory.csproj", "{987EC524-5740-4649-A921-9F13F675C0F8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

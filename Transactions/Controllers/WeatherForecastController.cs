@@ -23,7 +23,15 @@ namespace Transactions.Controllers
         [Route("/transactions")]
         public IEnumerable<Transaction> GetTransactions()
         {
-            return _context.Transactions.ToList();
+            // return _context.Transactions.ToList();
+            return new List<Transaction>(){
+                new Transaction(){
+                            id = 1,
+                            Date = DateTime.Now,
+                            Value = 200,
+                            Note = "Teste moc"
+                }
+            };
         }
 
         [HttpGet]
@@ -74,9 +82,16 @@ namespace Transactions.Controllers
 
         [HttpGet]
         [Route("/banks")]
-        public IEnumerable<Bank> GetBanks()
+        public async Task<ActionResult<IEnumerable<Bank>>> GetBanks()
         {
-            return _context.Banks.ToList();
+            try
+            {
+                return _context.Banks.ToList();
+            }
+            catch (Exception e)
+            {
+                return await Task.FromResult(BadRequest(e.Message));
+            }
         }
 
         [HttpGet]

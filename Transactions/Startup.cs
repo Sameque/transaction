@@ -28,7 +28,8 @@ namespace Transactions
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Transactions", Version = "v1" });
             });
             services.AddDbContext<TransactionsContext>(options =>
-                    options.UseMySql("Server=localhost;DataBase=transactions;Uid=root;Pwd=allan75", builder => builder.MigrationsAssembly("Transactions")));
+                    //options.UseMySql("Server=db;DataBase=transactions;Uid=root;Pwd=toor123", builder => builder.MigrationsAssembly("Transactions")));
+                    options.UseMySql("Server=172.21.0.2;Port=3306;DataBase=transactions;Uid=root;Pwd=toor123", builder => builder.MigrationsAssembly("Transactions")));
                     //options.UseMySql(Configuration.GetConnectionString("TransactionsContext"), builder => builder.MigrationsAssembly("Transactions")));
             services.AddScoped<TransactionsContext>();
         }
@@ -43,6 +44,13 @@ namespace Transactions
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transactions v1"));
             }
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<TransactionsContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
